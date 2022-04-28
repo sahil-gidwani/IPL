@@ -12,8 +12,7 @@ st.markdown("""---""")
 @st.cache
 def load_data():
     # loading csv as pandas dataframe
-    df = pd.read_csv(
-        r'C:\Users\SAHIL\OneDrive\Documents\CODES\python\projects\pbl\matches.csv')
+    df = pd.read_csv(matches.csv)
 
     return df
 
