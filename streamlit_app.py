@@ -193,9 +193,3 @@ st.write(venue_df.style.apply(conditional_format, axis=1))
 # st.write(venue_df.loc[venue_option])
 
 st.markdown("""---""")
-
-# team strength -> batting/fielding
-
-st.subheader('Analyzing strength of teams based on batting or fielding')
-
-st.markdown("""---""")
