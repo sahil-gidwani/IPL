@@ -150,9 +150,10 @@ field_first_df = valid_matches_df[valid_matches_df['toss_decision'] == 'field']
 field_first_vs_match_win = (
     field_first_df['toss_winner'] == field_first_df['winner']).value_counts()
 
+labels=['Batting First', 'Fielding First']
 fig = px.bar(y=[(bat_first_vs_match_win.at[True]/(
     bat_first_vs_match_win.at[True]+bat_first_vs_match_win.at[False]))*100, (field_first_vs_match_win.at[True]/(
-        field_first_vs_match_win.at[True]+field_first_vs_match_win.at[False]))*100], x=['Batting First', 'Fielding First'])
+        field_first_vs_match_win.at[True]+field_first_vs_match_win.at[False]))*100], x=labels, color=lables)
 st.write(fig)
 
 st.markdown("""---""")
