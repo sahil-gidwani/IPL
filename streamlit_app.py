@@ -153,7 +153,7 @@ field_first_vs_match_win = (
 labels=['Batting First', 'Fielding First']
 fig = px.bar(y=[(bat_first_vs_match_win.at[True]/(
     bat_first_vs_match_win.at[True]+bat_first_vs_match_win.at[False]))*100, (field_first_vs_match_win.at[True]/(
-        field_first_vs_match_win.at[True]+field_first_vs_match_win.at[False]))*100], x=labels, color=lables)
+        field_first_vs_match_win.at[True]+field_first_vs_match_win.at[False]))*100], x=labels, color=labels)
 st.write(fig)
 
 st.markdown("""---""")
