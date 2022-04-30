@@ -146,17 +146,14 @@ bat_first_df = valid_matches_df[valid_matches_df['toss_decision'] == 'bat']
 bat_first_vs_match_win = (
     bat_first_df['toss_winner'] == bat_first_df['winner']).value_counts()
 
-st.write('Correlation between batting first and winning the match')
-st.write((bat_first_vs_match_win.at[True]/(
-    bat_first_vs_match_win.at[True]+bat_first_vs_match_win.at[False]))*100)
-
 field_first_df = valid_matches_df[valid_matches_df['toss_decision'] == 'field']
 field_first_vs_match_win = (
     field_first_df['toss_winner'] == field_first_df['winner']).value_counts()
 
-st.write('Correlation between fielding first and winning the match')
-st.write((field_first_vs_match_win.at[True]/(
-    field_first_vs_match_win.at[True]+field_first_vs_match_win.at[False]))*100)
+fig = px.bar(y=[(bat_first_vs_match_win.at[True]/(
+    bat_first_vs_match_win.at[True]+bat_first_vs_match_win.at[False]))*100, (field_first_vs_match_win.at[True]/(
+        field_first_vs_match_win.at[True]+field_first_vs_match_win.at[False]))*100], x=['Batting First', 'Fielding First'])
+st.write(fig)
 
 st.markdown("""---""")
 
