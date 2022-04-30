@@ -128,8 +128,12 @@ valid_matches_df = data_df[data_df['result'] != 'no result']
 toss_win_vs_match_win = (
     valid_matches_df['toss_winner'] == valid_matches_df['winner']).value_counts()
 
-st.write((toss_win_vs_match_win.at[True]/(
-    toss_win_vs_match_win.at[True]+toss_win_vs_match_win.at[False]))*100)
+toss_win_vs_match_win_is_true = (toss_win_vs_match_win.at[True]/(
+    toss_win_vs_match_win.at[True]+toss_win_vs_match_win.at[False]))*100
+
+fig = px.pie(values=[toss_win_vs_match_win_is_true,
+             100-toss_win_vs_match_win_is_true], names=['True', 'False'])
+st.write(fig)
 
 st.markdown("""---""")
 
