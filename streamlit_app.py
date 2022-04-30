@@ -96,7 +96,7 @@ pom_df.reset_index(inplace=True)
 pom_df = pom_df.rename(
     columns={'index': 'player'})
 
-pom_chart = px.bar(pom_df.head(10), x='player', y='POM won')
+pom_chart = px.bar(pom_df.head(10), y='player', x='POM won', orientation='h)
 st.plotly_chart(pom_chart)
 
 st.markdown("""---""")
