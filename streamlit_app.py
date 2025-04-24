@@ -9,7 +9,7 @@ st.title(f"*IPL Analysis*")
 st.markdown("""---""")
 
 
-@st.cache
+@st.cache_data()
 def load_data():
     # loading csv as pandas dataframe
     df = pd.read_csv('matches.csv')
