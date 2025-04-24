@@ -90,14 +90,12 @@ st.markdown("""---""")
 st.subheader("Players who have won the most number of 'player of match' awards")
 
 pom_list = data_df['player_of_match'].value_counts()
-pom_df = pd.DataFrame(pom_list)
-pom_df.rename(columns={'player_of_match': 'POM won'}, inplace=True)
+pom_df = pd.DataFrame(pom_list).reset_index()
+pom_df.columns = ['player', 'POM won']  # rename both columns properly
 
 st.write(pom_df)
 
 pom_df.reset_index(inplace=True)
-pom_df = pom_df.rename(
-    columns={'index': 'player'})
 
 pom_chart = px.bar(pom_df.head(10), y='player', x='POM won', orientation='h')
 st.plotly_chart(pom_chart)
