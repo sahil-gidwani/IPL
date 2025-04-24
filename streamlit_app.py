@@ -54,7 +54,7 @@ st.subheader('Teams with the highest win percentage')
 
 winners_list = data_df['winner'].value_counts()
 winners_df = pd.DataFrame(winners_list)
-winners_df.rename(columns={'winner': 'matches won'}, inplace=True)
+winners_df.columns = ['matches won']  # Explicitly set the correct column name
 
 matches_played_list_1 = data_df['team1'].value_counts()
 matches_played_list_2 = data_df['team2'].value_counts()
