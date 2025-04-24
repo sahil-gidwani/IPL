@@ -62,10 +62,13 @@ matches_played_list_2 = data_df['team2'].value_counts()
 matches_played_list = pd.concat(
     [matches_played_list_1, matches_played_list_2], axis=1)
 
+matches_played_list = pd.concat([matches_played_list_1, matches_played_list_2], axis=1)
+matches_played_list.columns = ['team1_matches', 'team2_matches']  # Set explicit column names
+
 matches_played_df = pd.DataFrame(matches_played_list)
-matches_played_df['matches played'] = matches_played_df['team1'] + \
-    matches_played_df['team2']
-matches_played_df.drop(columns=['team1', 'team2'], inplace=True)
+matches_played_df['matches played'] = matches_played_df['team1_matches'].fillna(0) + \
+                                      matches_played_df['team2_matches'].fillna(0)
+matches_played_df.drop(columns=['team1_matches', 'team2_matches'], inplace=True)
 
 matches_won_percent_df = pd.concat([winners_df, matches_played_df], axis=1)
 matches_won_percent_df['win %'] = (
